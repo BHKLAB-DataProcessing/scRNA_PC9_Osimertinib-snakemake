@@ -14,6 +14,9 @@ rule process_GSE150949:
         S3.remote(prefix + 'download/GSE150949_metaData_with_lineage.txt')
     output:
         S3.remote(prefix + 'scRNA_PC9_Osimertinib.rds')
+    resources:
+        mem_mb=15000,
+        disk_mb=6000
     shell:
         """
         Rscript scripts/process_GSE150949.R \
